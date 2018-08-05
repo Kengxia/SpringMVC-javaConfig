@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.my.work.mapper.IeaseBaseDeptDMapper">
+  <resultMap id="BaseResultMap" type="com.my.work.pojo.IeaseBaseDeptD">
+    <id column="DEPT_ID" jdbcType="VARCHAR" property="deptId" />
+    <result column="COMPANY_ID" jdbcType="VARCHAR" property="companyId" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="CREATER" jdbcType="VARCHAR" property="creater" />
+    <result column="DEPT_CODE" jdbcType="VARCHAR" property="deptCode" />
+    <result column="DEPT_NAME" jdbcType="VARCHAR" property="deptName" />
+    <result column="DESCRIPTION" jdbcType="VARCHAR" property="description" />
+    <result column="LAST_MODIFIER" jdbcType="VARCHAR" property="lastModifier" />
+    <result column="LAST_MODIFY_TIME" jdbcType="TIMESTAMP" property="lastModifyTime" />
+    <result column="NOTES" jdbcType="VARCHAR" property="notes" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    DEPT_ID, COMPANY_ID, CREATE_TIME, CREATER, DEPT_CODE, DEPT_NAME, DESCRIPTION, LAST_MODIFIER, 
+    LAST_MODIFY_TIME, NOTES
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from iease_base_dept_d
+    where DEPT_ID = #{deptId,jdbcType=VARCHAR}
+  </select>
+
+  <select id="selectIeaseBaseDeptDListPage" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from iease_base_dept_d
+  </select>
+</mapper>
